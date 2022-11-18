@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rendezvous', function (Blueprint $tablerdv) {
+        Schema::create('rendez_vouses', function (Blueprint $tablerdv) {
             $tablerdv->id();
             $tablerdv->date('daterdv');
             $tablerdv->time('heurerdv');
+            $tablerdv->rememberToken();
+            $tablerdv->timestamps();
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rendezvous');
+        Schema::dropIfExists('rendez_vouses');
     }
 };
