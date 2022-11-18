@@ -18,7 +18,7 @@ class RendezVousFactory extends Factory
     {
         return [
             'daterdv'=>fake()->date(),
-            'heurerdv'=>fake()->Integer(),
+            'heurerdv'=>fake()->time(),
         ];
     }
     
