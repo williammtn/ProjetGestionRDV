@@ -34,7 +34,7 @@ function CarouselComponent() {
             <Carousel.Item>
                 <img
                     className="d-block"
-                    src="https://medias.bpdm-beaute.com/medium/defaut/coiffure/shamp-coupe-brushing-2.jpg"
+                    src="https://res.cloudinary.com/planity/image/upload/t_d_main,f_auto/e0f4564d-155d-4629-8705-54767872cf77"
                     alt="Third slide"
                     style={{ height: 500, width: "100%" }}
                 />
