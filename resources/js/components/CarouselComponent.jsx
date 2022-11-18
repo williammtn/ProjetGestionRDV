@@ -13,8 +13,9 @@ function CarouselComponent() {
                     style={{ height: 500, width: "100%" }}
                 />
                 <Carousel.Caption>
-                    <h3>First slide label</h3>
+                    <h3>Notre salon de coiffure</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <a href="/rdv" type="button" className="btn btn-primary">Prendre rendez-vous</a>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -26,7 +27,7 @@ function CarouselComponent() {
                 />
 
                 <Carousel.Caption>
-                    <h3>Second slide label</h3>
+                    <h3>Contenu 2</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -39,7 +40,7 @@ function CarouselComponent() {
                 />
 
                 <Carousel.Caption>
-                    <h3>Third slide label</h3>
+                    <h3>Contenu 3</h3>
                     <p>
                         Praesent commodo cursus magna, vel scelerisque nisl consectetur.
                     </p>
