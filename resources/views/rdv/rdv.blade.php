@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
         <p>Ceci est la page de prise des rendez-vous du site.</p>
     </div>
     <h1>Liste des rendez-vous</h1>
