@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forfait', function (Blueprint $tableforfait) {
+        Schema::create('forfaits', function (Blueprint $tableforfait) {
             $tableforfait->id();
-            $tableforfait->string('description');
+            $tableforfait->text('description');
+            $tableforfait->rememberToken();
+            $tableforfait->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forfait');
+        Schema::dropIfExists('forfaits');
     }
 };
