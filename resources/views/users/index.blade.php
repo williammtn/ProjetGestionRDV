@@ -35,8 +35,7 @@
             <tr>
                 <td>
                     <!-- Lien pour afficher un Post : "posts.show" -->
-                    {{$user->id}}
-                    <a href="{{ route('users.show', $user) }}" title="Lire l'article" >{{ $user->title }}</a>
+                    <a href="{{ route('users.show', $user) }}" title="Lire l'utilisateur" >{{ $user->id }}</a>
                 </td>
                 <td>
                     {{$user->Username}}
