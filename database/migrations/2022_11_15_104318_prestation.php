@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prestation', function (Blueprint $tableprestation) {
+        Schema::create('prestations', function (Blueprint $tableprestation) {
             $tableprestation->id();
-            $tableprestation->string('description');
+            $tableprestation->text('description');
             $tableprestation->integer('prix');
             $tableprestation->integer('temps');
-            $tableprestation->unsignedBigInteger('id_forfait');
-            $tableprestation->foreign('id_forfait')
+            $tableprestation->unsignedBigInteger('idforfait');
+            $tableprestation->foreign('idforfait')
                             ->references('id')
                             ->on('forfait')
-                            ->onDelete('cascade');      
+                            ->onDelete('cascade');   
+            $tableprestation->rememberToken();
+            $tableprestation->timestamps();   
         });
 
     }
@@ -34,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prestation');
+        Schema::dropIfExists('prestations');
     }
 };
