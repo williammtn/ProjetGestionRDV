@@ -6,9 +6,9 @@
     </div>
     <h1>Liste des rendez-vous</h1>
     <table>
-        <td>ID</td>
-        <td>daterdv</td>
-        <td>heurerdv</td>
+        <th>ID</th>
+        <th>daterdv</th>
+        <th>heurerdv</th>
         @foreach ($rendezvous as $rdv)
         <tr>
             <td>{{$rdv['id']}}</td>
