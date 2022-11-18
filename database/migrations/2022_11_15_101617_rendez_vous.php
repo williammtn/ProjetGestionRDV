@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('rendez_vouses', function (Blueprint $tablerdv) {
+            $tablerdv->id();
+            $tablerdv->date('daterdv');
+            $tablerdv->time('heurerdv');
+            $tablerdv->rememberToken();
+            $tablerdv->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('rendez_vouses');
+    }
+};
