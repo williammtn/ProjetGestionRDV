@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
 Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
+
+Route::resource("users", UserController::class);
