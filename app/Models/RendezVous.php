@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 class RendezVous extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    protected $table = 'rendez_vous';
     /**
      * The attributes that are mass assignable.
      *
