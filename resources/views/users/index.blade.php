@@ -5,7 +5,7 @@
 
     <p>
         <!-- Lien pour créer un nouvel article : "posts.create" -->
-        <a href="{{ route('users.create') }}" title="Créer un article" >Créer un nouveau user</a>
+        <a href="{{ route('users.create') }}" title="Créer un user" >Créer un nouveau user</a>
     </p>
 
     <!-- Le tableau pour lister les articles/posts -->
@@ -29,16 +29,16 @@
         </tr>
         </thead>
         <tbody>
-        <!-- On parcourt la collection de Post -->
+        <!-- On parcourt la collection de Users -->
         @foreach ($users as $user)
 
             <tr>
                 <td>
-                    <!-- Lien pour afficher un Post : "posts.show" -->
+                    <!-- Lien pour afficher un User : "user.show" -->
                     <a href="{{ route('users.show', $user) }}" title="Lire l'utilisateur" >{{ $user->id }}</a>
                 </td>
                 <td>
-                    {{$user->Username}}
+                    {{$user->username}}
                 </td>
                 <td>
                     {{$user->nom}}
