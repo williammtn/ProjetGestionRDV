@@ -17,6 +17,11 @@ return new class extends Migration
             $tablerdv->id();
             $tablerdv->date('daterdv');
             $tablerdv->time('heurerdv');
+            $tablerdv->unsignedBigInteger('idforfait');
+            $tablerdv->foreign('idforfait')
+                            ->references('id')
+                            ->on('forfaits')
+                            ->onDelete('cascade');
             $tablerdv->rememberToken();
             $tablerdv->timestamps();
         });

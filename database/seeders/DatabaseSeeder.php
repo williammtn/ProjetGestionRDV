@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Database\Seeders\SectionSeeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,9 +35,10 @@ class DatabaseSeeder extends Seeder
         ])->create();
         $this->call([
             UserSeeder::class,
+            PrestationSeeder::class,
+            SectionSeeder::class,
             ForfaitSeeder::class,
             RendezVousSeeder::class,
-            PrestationSeeder::class,
         ]);
     }
 }

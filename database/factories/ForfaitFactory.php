@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Section;
+use App\Models\Prestation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,12 @@ class ForfaitFactory extends Factory
      */
     public function definition()
     {
+        $prestations_id = Prestation::all()->pluck('id');
+        $section_id = Section::all()->pluck('id');
         return [
             'description'=>fake()->text(),
+            'idprestation'=>$this->faker->randomElement($prestations_id),
+            'idsection'=>$this->faker->randomElement($section_id),
         ];
     }
 }
