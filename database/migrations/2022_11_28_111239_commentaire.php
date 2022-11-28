@@ -13,17 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rendez_vous', function (Blueprint $tablerdv) {
-            $tablerdv->id();
-            $tablerdv->date('daterdv');
-            $tablerdv->time('heurerdv');
-            $tablerdv->unsignedBigInteger('iduser');
-            $tablerdv->foreign('iduser')
+        Schema::create('commentaires', function (Blueprint $tablecommentaire) {
+            $tablecommentaire->id();
+            $tablecommentaire->string('contenu');
+            $tablecommentaire->date('date');
+            $tablecommentaire->integer('note');
+            $tablecommentaire->unsignedBigInteger('iduser');
+            $tablecommentaire->foreign('iduser')
                             ->references('id')
                             ->on('users')
                             ->onDelete('cascade');
-            $tablerdv->rememberToken();
-            $tablerdv->timestamps();
+            $tablecommentaire->rememberToken();
+            $tablecommentaire->timestamps();
         });
     }
 
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rendez_vous');
+        Schema::dropIfExists('commentaires');
     }
 };

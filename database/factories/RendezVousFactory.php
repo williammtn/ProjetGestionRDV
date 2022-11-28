@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 use DateTime;
 use DateInterval;
 /**
@@ -18,9 +19,11 @@ class RendezVousFactory extends Factory
     public function definition()
     {   $startDate = "2022-09-01";  // or 'now'
         $nbDays = 30;
+        $users_id = User::all()->pluck('id');
         return [
             'daterdv'=> (new DateTime($startDate))->add(new DateInterval('P'.$this->faker->numberBetween(0,$nbDays).'D'))->format('Y-m-d'),
             'heurerdv'=>$this->faker->randomElement(['08','09','10','11','12','13','14','15','16','17','18','19']).":".$this->faker->randomElement(['00:00','30:00']),
+            'iduser'=>$this->faker->randomElement($users_id),
         ];
     }
 
