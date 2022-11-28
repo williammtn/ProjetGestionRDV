@@ -40,4 +40,8 @@ Route::get('/users/{id}',[UserController::class,'show'])->name('users.show')->wh
 
 Route::post('/users/create',[UserController::class,'store'])->name('user.store');
 
+
+
 Route::resource("users", UserController::class);
+
+Route::delete('/users/{user}',[UserController::class,'delete'])->name('user.delete');

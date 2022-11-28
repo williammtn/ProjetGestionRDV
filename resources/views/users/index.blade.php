@@ -8,8 +8,8 @@
         <a href="{{ route('users.create') }}" title="Créer un user" >Créer un nouveau user</a>
     </p>
 
-    <!-- Le tableau pour lister les articles/posts -->
-    <table border="1" >
+
+    <table >
         <thead>
         <tr>
             <th>ID</th>
@@ -78,13 +78,13 @@
                     <a href="{{ route('users.edit', $user) }}" title="Modifier l'article" >Modifier</a>
                 </td>
                 <td>
-                    <!-- Formulaire pour supprimer un Post : "posts.destroy" -->
-                    <form method="POST" action="{{ route('users.destroy', $user) }}" >
-                        <!-- CSRF token -->
-                    @csrf
-                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                        @method("DELETE")
-                        <input type="submit" value="x Supprimer" >
+                    <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous vraiment supprimer l\'utilisateur ? ')){
+                        document.getElementById('form-{{$user->id}}').submit()
+                     }">Supprimer</a>
+
+                    <form id="form-{{$user->id}}" action="{{route('user.delete',['user'=>$user->id])}}" method="post">
+                        @csrf
+                        <input type="hidden" name="_method" value="delete">
                     </form>
                 </td>
             </tr>

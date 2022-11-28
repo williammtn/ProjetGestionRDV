@@ -72,7 +72,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('users.show',['user'=>$user]);
     }
 
@@ -103,10 +103,12 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $user)
+    public function delete($id)
     {
-        //
+        DB::delete('delete from users where id = ? ',[$id]);
+
+        return redirect()->route('users.index');
     }
 }
