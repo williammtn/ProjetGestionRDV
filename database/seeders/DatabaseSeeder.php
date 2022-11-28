@@ -35,10 +35,11 @@ class DatabaseSeeder extends Seeder
         ])->create();
         $this->call([
             UserSeeder::class,
-            PrestationSeeder::class,
             SectionSeeder::class,
             ForfaitSeeder::class,
             RendezVousSeeder::class,
+            CommentaireSeeder::class,
+            PrestationSeeder::class,
         ]);
     }
 }
