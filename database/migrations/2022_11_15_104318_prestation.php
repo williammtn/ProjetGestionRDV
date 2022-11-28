@@ -16,13 +16,9 @@ return new class extends Migration
         Schema::create('prestations', function (Blueprint $tableprestation) {
             $tableprestation->id();
             $tableprestation->text('description');
+            $tableprestation->text('complement');
             $tableprestation->integer('prix');
             $tableprestation->integer('temps');
-            $tableprestation->unsignedBigInteger('idforfait');
-            $tableprestation->foreign('idforfait')
-                            ->references('id')
-                            ->on('forfaits')
-                            ->onDelete('cascade');
             $tableprestation->rememberToken();
             $tableprestation->timestamps();
         });
