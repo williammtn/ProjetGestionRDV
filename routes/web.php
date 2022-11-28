@@ -31,5 +31,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource("prestations", PrestationController::class);
 Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
 Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
+Route::get('/forfaits',[\App\Http\Controllers\ForfaitController::class,'index'])->name('forfaits');
 
 Route::resource("users", UserController::class);

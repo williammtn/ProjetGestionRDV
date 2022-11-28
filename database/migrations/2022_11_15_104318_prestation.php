@@ -21,10 +21,10 @@ return new class extends Migration
             $tableprestation->unsignedBigInteger('idforfait');
             $tableprestation->foreign('idforfait')
                             ->references('id')
-                            ->on('forfait')
-                            ->onDelete('cascade');   
+                            ->on('forfaits')
+                            ->onDelete('cascade');
             $tableprestation->rememberToken();
-            $tableprestation->timestamps();   
+            $tableprestation->timestamps();
         });
 
     }
