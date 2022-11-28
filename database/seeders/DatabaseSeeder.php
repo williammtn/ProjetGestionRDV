@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ForfaitSeeder::class,
             RendezVousSeeder::class,
+            CommentaireSeeder::class,
             PrestationSeeder::class,
         ]);
     }
