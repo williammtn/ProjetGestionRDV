@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Utilisateur {{  }}</h1>
+    <h1>Utilisateur : {{$user->id}}</h1>
 
 
     <!-- Le tableau pour lister les articles/posts -->
-    <table border="1" >
+    <table >
         <thead>
         <tr>
             <th>ID</th>
@@ -24,6 +24,47 @@
             <th colspan="2" >Opérations</th>
         </tr>
         </thead>
+        <tbody>
 
+        <tr>
+            <td>
+                {{$user->username}}
+            </td>
+            <td>
+                {{$user->nom}}
+            </td>
+            <td>
+                {{$user->prenom}}
+            </td>
+            <td>
+                {{$user->numerotel}}
+            </td>
+            <td>
+                {{$user->datenaissance}}
+            </td>
+            <td>
+                {{$user->isadmin}}
+            </td>
+            <td>
+                {{$user->email}}
+            </td>
+            <td>
+                {{$user->email_verified_at}}
+            </td>
+            <td>
+                {{$user->password}}
+            </td>
+            <td>
+                {{$user->remember_token}}
+            </td>
+            <td>
+                {{$user->created_at}}
+            </td>
+            <td>
+                {{$user->updated_at}}
+            </td>
+        </tr>
+        <a href="{{ route('users.index') }}" class="btn btn-primary">Retour aux utilisateurs</a>
+        </tbody>
     </table>
 @endsection

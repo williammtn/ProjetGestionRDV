@@ -19,4 +19,6 @@ class Forfait extends Model
     protected $fillable = [
         'description',
     ];
+
+
 }

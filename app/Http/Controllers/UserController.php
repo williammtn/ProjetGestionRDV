@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Forfait;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -71,8 +72,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::where('id')
-        return view('users.show');
+        $user = User::find($id);
+        return view('users.show',['user'=>$user]);
     }
 
     /**
