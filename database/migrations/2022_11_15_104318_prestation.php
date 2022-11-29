@@ -19,6 +19,7 @@ return new class extends Migration
             $tableprestation->text('complement');
             $tableprestation->integer('prix');
             $tableprestation->integer('temps');
+            $tableprestation->boolean('reservable');
             $tableprestation->rememberToken();
             $tableprestation->timestamps();
         });
