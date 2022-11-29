@@ -1,8 +1,11 @@
+@extends('layouts.app')
+
+@section('content')
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>How to Use Fullcalendar in Laravel 8</title>
+    <title>Calendrier</title>
     
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -16,13 +19,13 @@
   
 <div class="container">
     <br />
-    <h1 class="text-center text-primary"><u>How to Use Fullcalendar in Laravel 8</u></h1>
+    <h1 class="text-center text-primary"><u>Calendrier de réservation</u></h1>
     <br />
 
     <div id="calendar"></div>
 
 </div>
-   
+
 <script>
 
 $(document).ready(function () {
@@ -146,3 +149,5 @@ $(document).ready(function () {
   
 </body>
 </html>
+
+@endsection
