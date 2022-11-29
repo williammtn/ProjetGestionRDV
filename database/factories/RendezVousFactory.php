@@ -2,13 +2,9 @@
 
 namespace Database\Factories;
 
-<<<<<<< database/factories/RendezVousFactory.php
-=======
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
->>>>>>> database/factories/RendezVousFactory.php
 use DateTime;
 use DateInterval;
+use App\Models\User;
 use App\Models\Forfait;
 use Illuminate\Database\Eloquent\Factories\Factory;
 /**
