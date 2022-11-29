@@ -10,4 +10,14 @@ use Laravel\Sanctum\HasApiTokens;
 class Section extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'nom',
+        'odre',
+    ];
 }
