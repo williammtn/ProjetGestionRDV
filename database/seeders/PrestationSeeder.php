@@ -39,6 +39,7 @@ class PrestationSeeder extends Seeder
             'complement' => $oreilles,
             'prix'=>22,
             'temps'=>30,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -48,6 +49,7 @@ class PrestationSeeder extends Seeder
             'complement' => $epaules,
             'prix'=>27,
             'temps'=>30,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -57,6 +59,7 @@ class PrestationSeeder extends Seeder
             'complement' => $dessousepaules,
             'prix'=>30,
             'temps'=>40,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -66,6 +69,7 @@ class PrestationSeeder extends Seeder
             'complement' => $dessousepaules,
             'prix'=>39,
             'temps'=>45,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -75,6 +79,7 @@ class PrestationSeeder extends Seeder
             'complement' => $oreilles,
             'prix'=>33,
             'temps'=>45,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -84,6 +89,7 @@ class PrestationSeeder extends Seeder
             'complement' => $epaules,
             'prix'=>38,
             'temps'=>45,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -93,6 +99,7 @@ class PrestationSeeder extends Seeder
             'complement' => $dessousepaules,
             'prix'=>41,
             'temps'=>60,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -102,6 +109,7 @@ class PrestationSeeder extends Seeder
             'complement' => $oreilles,
             'prix'=>53,
             'temps'=>90,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -111,6 +119,7 @@ class PrestationSeeder extends Seeder
             'complement' => $epaules,
             'prix'=>63,
             'temps'=>90,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -120,6 +129,7 @@ class PrestationSeeder extends Seeder
             'complement' => $dessousepaules,
             'prix'=>70,
             'temps'=>110,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -129,6 +139,7 @@ class PrestationSeeder extends Seeder
             'complement' => $oreilles,
             'prix'=>64,
             'temps'=>105,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -138,6 +149,7 @@ class PrestationSeeder extends Seeder
             'complement' => $epaules,
             'prix'=>72,
             'temps'=>105,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -147,6 +159,7 @@ class PrestationSeeder extends Seeder
             'complement' =>$dessousepaules,
             'prix'=>78,
             'temps'=>125,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -156,6 +169,7 @@ class PrestationSeeder extends Seeder
             'complement' =>$oreilles,
             'prix'=>60,
             'temps'=>120,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -165,6 +179,7 @@ class PrestationSeeder extends Seeder
             'complement' =>$epaules,
             'prix'=>73,
             'temps'=>120,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -174,6 +189,7 @@ class PrestationSeeder extends Seeder
             'complement' =>$dessousepaules,
             'prix'=>84,
             'temps'=>150,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -183,6 +199,7 @@ class PrestationSeeder extends Seeder
             'complement' =>$oreilles,
             'prix'=>71,
             'temps'=>135,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();
@@ -192,6 +209,7 @@ class PrestationSeeder extends Seeder
             'complement' =>$epaules,
             'prix'=>84,
             'temps'=>135,
+            'reservable'=>true,
             'created_at' => now(),
             'updated_at' => now(),
         ])->create();

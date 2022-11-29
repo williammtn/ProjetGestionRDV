@@ -21,5 +21,6 @@ class Prestation extends Model
         'complement',
         'prix',
         'temps',
+        'reservable',
     ];
 }
