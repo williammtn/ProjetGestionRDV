@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('username');
             $table->string('nom');
             $table->string('prenom');
-            $table->string('numerotel');
-            $table->date('datenaissance');
+            $table->string('numerotel')->nullable();
+            $table->date('datenaissance')->nullable();
             $table->boolean('isadmin')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

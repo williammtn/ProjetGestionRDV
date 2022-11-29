@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use DateTime;
 use DateInterval;
 use App\Models\User;
 use App\Models\Forfait;
-use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RendezVous>
  */
