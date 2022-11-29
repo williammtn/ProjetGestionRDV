@@ -74,8 +74,8 @@
                     {{$user->updated_at}}
                 </td>
                 <td>
-                    <!-- Lien pour modifier un Post : "posts.edit" -->
-                    <a href="{{ route('users.edit', $user) }}" title="Modifier l'article" >Modifier</a>
+                    <!-- Lien pour modifier un user : "user.update" -->
+                    <a href="{{ route('user.edit',$user) }}" title="Modifier l'utilisateur" >Modifier</a>
                 </td>
                 <td>
                     <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous vraiment supprimer l\'utilisateur ? ')){

@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Symfony\Component\Translation\t;
 
 class UserController extends Controller
 {
@@ -80,11 +81,12 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit',['user'=>$user]);
     }
 
     /**
@@ -92,11 +94,34 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+
+
+        $table  = DB::table('users');
+        $data = array(
+            array(
+                'username'=>$request->input('username'),
+                'nom'=>$request->input('nom'),
+                'prenom'=>$request->input('prenom'),
+                'numerotel'=>$request->input('numerotel'),
+                'datenaissance'=>$request->input('datenaissance'),
+                'isadmin'=>false,
+                'email'=>$request->input('email'),
+                'email_verified_at'=>now(),
+                'password'=>$request->input('password'),
+                'remember_token'=>'0000',
+                'created_at'=>now(),
+                'updated_at'=>now()
+            )
+        );
+
+
+        $table->upsert($data,'id');
+
+        return redirect()->route('users.index');
     }
 
     /**
