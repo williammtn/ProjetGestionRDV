@@ -96,11 +96,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(Request $request,User $user)
     {
 
-
-        $table  = DB::table('users');
         $data = array(
             array(
                 'username'=>$request->input('username'),
@@ -118,8 +116,8 @@ class UserController extends Controller
             )
         );
 
+        DB::table('users')->where('id',52)->update($data);
 
-        $table->upsert($data,'id');
 
         return redirect()->route('users.index');
     }

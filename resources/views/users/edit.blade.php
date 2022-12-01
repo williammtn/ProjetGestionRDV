@@ -7,11 +7,11 @@
                     <div class="card-header">{{ __('Update d\'un utilisateur ') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.update',['user'=>$user->id]) }}">
+                        <form method="POST" action="{{ route('user.update',$user) }}">
                             @csrf
 
                             <input type="hidden" name="_method" value="put">
-
+                            <h3>{{$user->id}}</h3>
                             <div class="mb-3">
                                 <label for="username" class="form-label"> Username : </label>
                                 <input type="text" name='username' class="form-control" value="{{$user->username}}">

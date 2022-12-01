@@ -39,6 +39,7 @@ Route::get('/forfaits',[ForfaitController::class,'index'])->name('forfaits');
 Route::get('/users',[UserController::class,'index'])->name('users.index');
 Route::get('/users/create',[UserController::class,'create'])->name('users.create');
 Route::get('/users/{id}',[UserController::class,'show'])->name('users.show')->whereNumber('id');
+
 Route::get('/useredit/{id}',[UserController::class,'edit'])->name('user.edit')->whereNumber('id');
 
 Route::post('/users/create',[UserController::class,'store'])->name('user.store');
