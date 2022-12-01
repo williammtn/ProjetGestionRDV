@@ -17,10 +17,11 @@ class PrestationFactory extends Factory
     public function definition()
     {
         return [
-            'description'=>fake()->text(),
-            'prix'=>fake()->numberBetween($min = 10, $max=30),
-            'temps'=>fake()->numberBetween($min = 5, $max = 50),
-            'idforfait'=>Forfait::inRandomOrder()->first()->id,
+            'description'=>$this->faker->text(),
+            'complement'=>$this->faker->text(),
+            'prix'=>$this->faker->numberBetween($min = 10, $max=30),
+            'temps'=>$this->faker->numberBetween($min = 5, $max = 50),
+            'reservable'=>$this->faker->boolean(),
         ];
     }
 }

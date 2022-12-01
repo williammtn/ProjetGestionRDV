@@ -2,25 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 
-class RendezVous extends Model
+class Section extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $table = 'rendez_vous';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'daterdv',
-        'heurerdv',
-        'idforfait',
-        'iduser',
-
+        'nom',
+        'odre',
     ];
 }

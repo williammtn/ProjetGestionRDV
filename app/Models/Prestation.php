@@ -18,8 +18,9 @@ class Prestation extends Model
      */
     protected $fillable = [
         'description',
+        'complement',
         'prix',
         'temps',
-        'idforfait',
+        'reservable',
     ];
 }
