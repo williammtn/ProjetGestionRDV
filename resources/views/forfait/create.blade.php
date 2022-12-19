@@ -7,6 +7,7 @@
                     <div class="card-header">{{ __('Création d\'un forfait') }}</div>
 
                         <div class="card-body">
+                            <form method="POST" action="{{ route('forfaits.store') }}">
                                 @csrf
 
                                 <div class="mb-3">
@@ -32,6 +33,16 @@
                                 <div class="mb-3">
                                     <label for="datenaissance" class="form-label"> Réservable ? </label>
                                     <input type="text" name='reservable'class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="idprestation" class="form-label"> idprestation</label>
+                                    <input type="text" name='idprestation'class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="idsection" class="form-label"> idsection</label>
+                                    <input type="text" name='idsection'class="form-control">
                                 </div>
 
                                 <div class="col-md-6 offset-md-4">

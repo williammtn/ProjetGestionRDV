@@ -37,7 +37,22 @@ class ForfaitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Forfait::create(
+            array(
+                'description'=>$request->input('description'),
+                'complement'=>$request->input('complement'),
+                'prix'=>$request->input('prix'),
+                'temps'=>$request->input('temps'),
+                'reservable'=>$request->input('reservable'),
+                'idprestation'=>$request->input('idprestation'),
+                'idsection'=>$request->input('idsection'),
+                'remember_token'=>'0000',
+                'created_at'=>now(),
+                'updated_at'=>now()
+            )
+        );
+        return redirect()->route('forfaits.index');
+
     }
 
     /**
