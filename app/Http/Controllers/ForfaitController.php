@@ -26,7 +26,7 @@ class ForfaitController extends Controller
      */
     public function create()
     {
-        //
+        return view('forfait.create');
     }
 
     /**
