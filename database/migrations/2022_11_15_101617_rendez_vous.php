@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('rendez_vous', function (Blueprint $tablerdv) {
             $tablerdv->id();
+            $tablerdv->text('title');
             $tablerdv->date('daterdv');
             $tablerdv->time('heurerdv');
             $tablerdv->unsignedBigInteger('idforfait');
