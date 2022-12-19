@@ -14,9 +14,6 @@
         <tr>
             <th>ID</th>
             <th>description</th>
-            <th>prix</th>
-            <th>temps</th>
-            <th>idforfait</th>
             <th>remember_token</th>
             <th>created_at</th>
             <th>updated_at</th>
@@ -33,15 +30,6 @@
             </td>
             <td>
                     {{$prestation-> description}}
-            </td>
-            <td>
-                    {{$prestation-> prix}}
-            </td>
-            <td>
-                    {{$prestation-> temps}}
-            </td>
-            <td>
-                    {{$prestation-> idforfait}}
             </td>
             <td>
                     {{$prestation-> remember_token}}
