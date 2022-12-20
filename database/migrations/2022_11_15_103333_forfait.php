@@ -20,18 +20,18 @@ return new class extends Migration
             $tableforfait->integer('prix');
             $tableforfait->integer('temps');
             $tableforfait->boolean('reservable');
-            
-            $tableforfait->unsignedBigInteger('idprestation');
-            $tableforfait->unsignedBigInteger('idsection');
 
-            // $tableforfait->foreign('idprestation')
+            // $tableforfait->unsignedBigInteger('idprestation');
+            // $tableforfait->unsignedBigInteger('idsection');
+
+            // // $tableforfait->foreign('idprestation')
+            // //                 ->references('id')
+            // //                 ->on('prestations')
+            // //                 ->onDelete('cascade');
+            // $tableforfait->foreign('idsection')
             //                 ->references('id')
-            //                 ->on('prestations')
+            //                 ->on('sections')
             //                 ->onDelete('cascade');
-            $tableforfait->foreign('idsection')
-                            ->references('id')
-                            ->on('sections')
-                            ->onDelete('cascade');
 
             $tableforfait->rememberToken();
             $tableforfait->timestamps();

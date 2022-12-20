@@ -42,7 +42,7 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label for="idprestation" class="form-label"> idprestation</label>
                                     <input type="text" name='idprestation'class="form-control">
                                 </div>
@@ -50,7 +50,7 @@
                                 <div class="mb-3">
                                     <label for="idsection" class="form-label"> idsection</label>
                                     <input type="text" name='idsection'class="form-control">
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

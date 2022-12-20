@@ -26,8 +26,8 @@ class ForfaitFactory extends Factory
             'prix'=>$this->faker->numberBetween($min = 10, $max=30),
             'temps'=>$this->faker->numberBetween($min = 5, $max = 50),
             'reservable'=>$this->faker->boolean(),
-            'idprestation'=>$this->faker->randomElement($prestations_id),
-            'idsection'=>$this->faker->randomElement($section_id),
+            // 'idprestation'=>$this->faker->randomElement($prestations_id),
+            // 'idsection'=>$this->faker->randomElement($section_id),
         ];
     }
 }

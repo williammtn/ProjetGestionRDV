@@ -46,8 +46,8 @@ class ForfaitController extends Controller
                 'prix'=>$request->input('prix'),
                 'temps'=>$request->input('temps'),
                 'reservable'=>$request->input('reservable'),
-                'idprestation'=>$request->input('idprestation'),
-                'idsection'=>$request->input('idsection'),
+                // 'idprestation'=>$request->input('idprestation'),
+                // 'idsection'=>$request->input('idsection'),
                 'remember_token'=>'0000',
                 'created_at'=>now(),
                 'updated_at'=>now()
