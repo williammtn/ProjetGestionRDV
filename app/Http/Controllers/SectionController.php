@@ -91,7 +91,7 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        Section::destroy('delete from users where id = ? ',[$id]);
+        Section::destroy([$id]);
 
         return redirect()->route('sections.index');
 
