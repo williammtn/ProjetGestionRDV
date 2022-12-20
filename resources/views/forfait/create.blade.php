@@ -11,8 +11,8 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label for="username" class="form-label"> Description : </label>
-                                    <select name="description">
+                                    <label for="description" class="form-label"> Description : </label>
+                                    <select multiple="multiple" name="description">
                                     @foreach ($prestation as $prestations)
                                         <option value="{{ $prestations->description }}">{{ $prestations->description }}</option>
                                     @endforeach
@@ -20,23 +20,26 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="nom" class="form-label"> Complément : </label>
+                                    <label for="complement" class="form-label"> Complément : </label>
                                     <input type="text" name='complement' class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="prenom" class="form-label"> Prix: </label>
+                                    <label for="prix" class="form-label"> Prix: </label>
                                     <input type="text" name='prix' class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="numerotel" class="form-label"> Temps : </label>
+                                    <label for="temps" class="form-label"> Temps : </label>
                                     <input type="text" name='temps' class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="datenaissance" class="form-label"> Réservable ? </label>
-                                    <input type="text" name='reservable'class="form-control">
+                                    <label for="reservable" class="form-label"> Réservable ? </label>
+                                    <select name="reservable">
+                                        <option value="1">Oui</option>
+                                        <option value="0">Non</option>
+                                    </select>
                                 </div>
 
                                 <div class="mb-3">
