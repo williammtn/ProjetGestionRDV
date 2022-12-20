@@ -14,7 +14,7 @@
                                     <label for="username" class="form-label"> Description : </label>
                                     <select name="description">
                                     @foreach ($prestation as $prestations)
-                                        <option value="{{ $prestations->id }}">{{ $prestations->description }}</option>
+                                        <option value="{{ $prestations->description }}">{{ $prestations->description }}</option>
                                     @endforeach
                                     </select>
                                 </div>
