@@ -39,9 +39,11 @@ class ForfaitController extends Controller
      */
     public function store(Request $request)
     {
+        $description = $request->input('description',[]);
+        $description = implode(' + ', $description);
         Forfait::create(
             array(
-                'description'=>$request->input('description'),
+                'description'=>$description,
                 'complement'=>$request->input('complement'),
                 'prix'=>$request->input('prix'),
                 'temps'=>$request->input('temps'),

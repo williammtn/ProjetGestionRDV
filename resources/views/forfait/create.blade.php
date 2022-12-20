@@ -12,7 +12,7 @@
 
                                 <div class="mb-3">
                                     <label for="description" class="form-label"> Description : </label>
-                                    <select multiple="multiple" name="description">
+                                    <select multiple="multiple" name="description[]">
                                     @foreach ($prestation as $prestations)
                                         <option value="{{ $prestations->description }}">{{ $prestations->description }}</option>
                                     @endforeach
