@@ -12,7 +12,11 @@
 
                                 <div class="mb-3">
                                     <label for="username" class="form-label"> Description : </label>
-                                    <input type="text" name='description' class="form-control">
+                                    <select name="role_id">
+                                    @foreach ($prestation as $prestations)
+                                        <option value="{{ $prestations->id }}">{{ $prestations->description }}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="mb-3">

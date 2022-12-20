@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prestation;
 use App\Models\Forfait;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ForfaitController extends Controller
      */
     public function create()
     {
-        return view('forfait.create');
+        $prestation = Prestation::all();
+        return view('forfait.create')->with('prestation', $prestation);
     }
 
     /**
@@ -98,5 +100,10 @@ class ForfaitController extends Controller
     public function destroy(Forfait $forfait)
     {
         //
+    }
+
+    public function getPrestations($prestation) {
+
+        
     }
 }
