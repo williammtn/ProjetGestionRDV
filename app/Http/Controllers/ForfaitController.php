@@ -58,7 +58,7 @@ class ForfaitController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Forfait  $prestation
      * @return \Illuminate\Http\Response
      */
     public function show(Forfait $forfait)
@@ -69,7 +69,7 @@ class ForfaitController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Forfait  $prestation
      * @return \Illuminate\Http\Response
      */
     public function edit(Forfait $forfait)
@@ -81,7 +81,7 @@ class ForfaitController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Forfait  $prestation
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Forfait $forfait)
@@ -92,7 +92,7 @@ class ForfaitController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Forfait  $prestation
      * @return \Illuminate\Http\Response
      */
     public function destroy(Forfait $forfait)
