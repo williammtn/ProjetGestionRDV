@@ -5,6 +5,7 @@ use App\Http\Livewire\Calendar;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ForfaitController;
 use App\Http\Controllers\PrestationController;
 use App\Http\Controllers\FullCalenderController;
@@ -36,6 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource("forfaits", ForfaitController::class);
 Route::resource("prestations", PrestationController::class);
+Route::resource("sections", SectionController::class);
 
 
 Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');

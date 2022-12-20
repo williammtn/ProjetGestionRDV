@@ -14,7 +14,9 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $sections = Section::latest()->get();
+
+        return view("sections.index", compact("sections"));
     }
 
     /**
@@ -24,7 +26,7 @@ class SectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('sections.create');
     }
 
     /**
@@ -35,7 +37,16 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Section::create(
+            array(
+                'nom'=>$request->input('nom'),
+                'ordre'=>$request->input('ordre'),
+                'remember_token'=>'0000',
+                'created_at'=>now(),
+                'updated_at'=>now()
+            )
+        );
+        return redirect()->route('sections.index');
     }
 
     /**
