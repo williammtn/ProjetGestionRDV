@@ -89,8 +89,11 @@ class SectionController extends Controller
      * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Section $section)
+    public function destroy($id)
     {
-        //
+        Section::destroy('delete from users where id = ? ',[$id]);
+
+        return redirect()->route('sections.index');
+
     }
 }

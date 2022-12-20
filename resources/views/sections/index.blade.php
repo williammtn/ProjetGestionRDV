@@ -49,15 +49,16 @@
                 <a href="{{ route('sections.edit', $section) }}" title="Modifier l'article" >Modifier</a>
             </td>
             <td>
-                <!-- Formulaire pour supprimer un prestation : "prestations.destroy" -->
-                <form method="section" action="{{ route('sections.destroy', $section) }}" >
-                    <!-- CSRF token -->
+                <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous supprimer la section ? ')){
+                    document.getElementById('form-{{$section->id}}').submit()
+                 }">Supprimer</a>
+
+                <form id="form-{{$section->id}}" action="{{route('sections.destroy',['section'=>$section->id])}}" method="post">
                     @csrf
-                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                    @method("DELETE")
-                    <input type="submit" value="x Supprimer" >
+                    <input type="hidden" name="_method" value="delete">
                 </form>
             </td>
+
         </tr>
         @endforeach
     </tbody>
