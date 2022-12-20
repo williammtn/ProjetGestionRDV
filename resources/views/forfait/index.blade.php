@@ -17,6 +17,7 @@
             <th>complement</th>
             <th>prix</th>
             <th>temps</th>
+            <th>idsection</th>
             <th>remember_token</th>
             <th>created_at</th>
             <th>updated_at</th>
@@ -42,6 +43,9 @@
             </td>
             <td>
                     {{$forfait-> temps}}
+            </td>
+            <td>
+                {{$forfait-> idsection}}
             </td>
             <td>
                     {{$forfait-> remember_token}}

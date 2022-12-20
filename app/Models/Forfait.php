@@ -23,6 +23,6 @@ class Forfait extends Model
         'temps',
         'reservable',
         // 'idprestation',
-        // 'idsection',
+        'idsection',
     ];
 }

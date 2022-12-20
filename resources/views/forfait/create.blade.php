@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="reservable" class="form-label"> Réservable ? </label>
+                                    <label for="reservable" class="form-label"> Réservable en ligne ? </label>
                                     <select name="reservable">
                                         <option value="1">Oui</option>
                                         <option value="0">Non</option>
@@ -45,12 +45,16 @@
                                 {{-- <div class="mb-3">
                                     <label for="idprestation" class="form-label"> idprestation</label>
                                     <input type="text" name='idprestation'class="form-control">
-                                </div>
+                                </div> --}}
 
                                 <div class="mb-3">
-                                    <label for="idsection" class="form-label"> idsection</label>
-                                    <input type="text" name='idsection'class="form-control">
-                                </div> --}}
+                                    <label for="idsection" class="form-label"> Section : </label>
+                                    <select name="idsection">
+                                        @foreach ($section as $sections)
+                                            <option value="{{ $sections->id }}">{{ $sections->nom }}</option>
+                                        @endforeach
+                                        </select>
+                                </div>
 
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

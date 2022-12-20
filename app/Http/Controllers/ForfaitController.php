@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Prestation;
 use App\Models\Forfait;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class ForfaitController extends Controller
@@ -28,7 +29,8 @@ class ForfaitController extends Controller
     public function create()
     {
         $prestation = Prestation::all();
-        return view('forfait.create')->with('prestation', $prestation);
+        $section = Section::all();
+        return view('forfait.create')->with('prestation', $prestation)->with('section',$section);
     }
 
     /**
@@ -39,17 +41,18 @@ class ForfaitController extends Controller
      */
     public function store(Request $request)
     {
-        $description = $request->input('description',[]);
-        $description = implode(' + ', $description);
+        $prestaDescription = $request->input('description',[]);
+        $prestaDescription = implode(' + ', $prestaDescription);
+
         Forfait::create(
             array(
-                'description'=>$description,
+                'description'=>$prestaDescription,
                 'complement'=>$request->input('complement'),
                 'prix'=>$request->input('prix'),
                 'temps'=>$request->input('temps'),
                 'reservable'=>$request->input('reservable'),
                 // 'idprestation'=>$request->input('idprestation'),
-                // 'idsection'=>$request->input('idsection'),
+                'idsection'=>$request->input('idsection'),
                 'remember_token'=>'0000',
                 'created_at'=>now(),
                 'updated_at'=>now()
