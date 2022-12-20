@@ -58,13 +58,13 @@
                 <a href="{{ route('forfaits.edit', $forfait) }}" title="Modifier l'article" >Modifier</a>
             </td>
             <td>
-                <!-- Formulaire pour supprimer un prestation : "prestations.destroy" -->
-                <form method="forfait" action="{{ route('forfaits.destroy', $forfait) }}" >
-                    <!-- CSRF token -->
+                <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous supprimer le forfait ? ')){
+                    document.getElementById('form-{{$forfait->id}}').submit()
+                 }">Supprimer</a>
+
+                <form id="form-{{$forfait->id}}" action="{{route('forfaits.destroy',['forfait'=>$forfait->id])}}" method="post">
                     @csrf
-                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                    @method("DELETE")
-                    <input type="submit" value="x Supprimer" >
+                    <input type="hidden" name="_method" value="delete">
                 </form>
             </td>
         </tr>

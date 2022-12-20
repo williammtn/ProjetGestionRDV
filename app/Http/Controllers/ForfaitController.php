@@ -102,13 +102,10 @@ class ForfaitController extends Controller
      * @param  \App\Models\Forfait  $prestation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Forfait $forfait)
+    public function destroy($id)
     {
-        //
-    }
+        Forfait::destroy([$id]);
 
-    public function getPrestations($prestation) {
-
-        
+        return redirect()->route('forfaits.index');
     }
 }
