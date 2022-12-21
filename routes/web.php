@@ -1,8 +1,10 @@
 <?php
 
+
+use App\Http\Controllers\ForfaitController;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 use App\Http\Livewire\Calendar;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PrestationController;
@@ -27,23 +29,22 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
 
 Route::resource("prestations", PrestationController::class);
 
+Route::resource("users", UserController::class);
+
 
 Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
 Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
-Route::get('/forfaits',[\App\Http\Controllers\ForfaitController::class,'index'])->name('forfaits');
+Route::get('/forfaits',[ForfaitController::class,'index'])->name('forfaits');
+
 
 Route::get('/full-calender', [FullCalenderController::class, 'index'])->name('prendrerdv');
 
 Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 
 
-Route::resource("users", UserController::class);

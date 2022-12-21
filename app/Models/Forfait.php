@@ -21,4 +21,6 @@ class Forfait extends Model
         'idprestation',
         'idsection',
     ];
+
+
 }
