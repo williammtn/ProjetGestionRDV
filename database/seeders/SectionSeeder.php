@@ -15,9 +15,25 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        Section::factory()
-            ->count(30)
-            ->create()
-        ;
+        Section::factory([
+            'nom'=>"Les forfaits femmes - Brushing",
+            'ordre' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+        Section::factory([
+            'nom'=>"Les forfaits femmes - Coupe Brushing",
+            'ordre' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+        Section::factory([
+            'nom'=>"Les forfaits - Coloration",
+            'ordre' => 3,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
     }
 }

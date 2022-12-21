@@ -18,7 +18,11 @@ class Forfait extends Model
      */
     protected $fillable = [
         'description',
-        'idprestation',
+        'complement',
+        'prix',
+        'temps',
+        'reservable',
+        // 'idprestation',
         'idsection',
     ];
 

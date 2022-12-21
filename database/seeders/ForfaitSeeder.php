@@ -18,7 +18,7 @@ class ForfaitSeeder extends Seeder
     public function run()
     {
         Forfait::factory()
-        ->count(30)
+        ->count(5)
         ->create();
     }
 }

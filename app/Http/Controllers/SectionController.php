@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prestation;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
-
-class PrestationController extends Controller
+class SectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class PrestationController extends Controller
      */
     public function index()
     {
-        $prestations = Prestation::latest()->get();
+        $sections = Section::latest()->get();
 
-        return view("prestations.index", compact("prestations"));
+        return view("sections.index", compact("sections"));
     }
 
     /**
@@ -27,7 +26,7 @@ class PrestationController extends Controller
      */
     public function create()
     {
-        return view('prestations.create');
+        return view('sections.create');
     }
 
     /**
@@ -38,24 +37,25 @@ class PrestationController extends Controller
      */
     public function store(Request $request)
     {
-        Prestation::create(
+        Section::create(
             array(
-                'description'=>$request->input('description'),
+                'nom'=>$request->input('nom'),
+                'ordre'=>$request->input('ordre'),
                 'remember_token'=>'0000',
                 'created_at'=>now(),
                 'updated_at'=>now()
             )
         );
-        return redirect()->route('prestations.index');
+        return redirect()->route('sections.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(Prestation $prestation)
+    public function show(Section $section)
     {
         //
     }
@@ -63,48 +63,37 @@ class PrestationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Section $section)
     {
-        $prestation = Prestation::findOrFail($id);
-        return view('prestations.edit',['prestation'=>$prestation]);
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prestation $prestation)
+    public function update(Request $request, Section $section)
     {
-        $request->validate([
-            'description'=>'required',
-            'updated_at'=>now()
-        ]);
-
-        $prestation->fill($request->post())->save();
-
-
-        return redirect()->route('prestations.index');
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Prestation  $prestation
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Prestation::destroy([$id]);
+        Section::destroy([$id]);
 
-        return redirect()->route('prestations.index');
+        return redirect()->route('sections.index');
 
     }
 }
