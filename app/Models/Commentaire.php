@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Forfait extends Model
+class Commentaire extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,10 +17,9 @@ class Forfait extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'description',
-        'idprestation',
-        'idsection',
+        'contenu',
+        'date',
+        'note',
+        'iduser',
     ];
-
-
 }

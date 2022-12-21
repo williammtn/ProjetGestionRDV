@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 
-class Forfait extends Model
+class Section extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,10 +17,7 @@ class Forfait extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'description',
-        'idprestation',
-        'idsection',
+        'nom',
+        'odre',
     ];
-
-
 }

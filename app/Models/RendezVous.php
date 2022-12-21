@@ -19,5 +19,8 @@ class RendezVous extends Model
     protected $fillable = [
         'daterdv',
         'heurerdv',
+        'idforfait',
+        'iduser',
+
     ];
 }
