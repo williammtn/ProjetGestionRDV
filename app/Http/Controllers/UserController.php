@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Forfait;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use function Symfony\Component\Translation\t;
 
 class UserController extends Controller
 {
@@ -20,9 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $users = User::latest()->get();
-        return view("users.index", compact("users"));
+        $users = User::all();
+        return view('user.index',['users'=>$users]);
     }
 
     /**
@@ -32,35 +29,40 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        $table  = DB::table('users');
-        $data = array(
-            array(
-                'username'=>$request->input('username'),
-                'nom'=>$request->input('nom'),
-                'prenom'=>$request->input('prenom'),
-                'numerotel'=>$request->input('numerotel'),
-                'datenaissance'=>$request->input('datenaissance'),
-                'isadmin'=>false,
-                'email'=>$request->input('email'),
-                'email_verified_at'=>now(),
-                'password'=>$request->input('password'),
-                'remember_token'=>'0000',
-                'created_at'=>now(),
-                'updated_at'=>now()
-            )
+        $this->validate(
+            $request,
+            [
+                'username'=>'required',
+                'nom'=>'required',
+                'prenom'=>'required',
+                'numerotel'=>'required',
+                'datenaissance'=>'required',
+                'email'=>'required',
+                'password'=>'required',
+            ]
         );
-        $table->insert($data);
+
+        $user = new User;
+        $user->username = $request->username;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->numerotel = $request->numerotel;
+        $user->datenaissance = $request->datenaissance;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        $user->save();
 
         return redirect()->route('users.index');
     }
@@ -68,69 +70,79 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  int  $id
      * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        return view('users.show',['user'=>$user]);
+        $action = $request->query('action','show');
+        $user = User::find($id);
+
+        return view('user.show',['user'=>$user, 'action'=>$action]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  int  $id
      * @return Application|Factory|View
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.edit',['user'=>$user]);
+        $user = User::find($id);
+        return view('user.edit',['user'=>$user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @param  int  $id
+     * @return RedirectResponse
      */
-    public function update(Request $request,User $user)
+    public function update(Request $request, $id)
     {
+        $user = User::find($id);
 
-        $data = array(
-            array(
-                'username'=>$request->input('username'),
-                'nom'=>$request->input('nom'),
-                'prenom'=>$request->input('prenom'),
-                'numerotel'=>$request->input('numerotel'),
-                'datenaissance'=>$request->input('datenaissance'),
-                'isadmin'=>false,
-                'email'=>$request->input('email'),
-                'email_verified_at'=>now(),
-                'password'=>$request->input('password'),
-                'remember_token'=>'0000',
-                'created_at'=>now(),
-                'updated_at'=>now()
-            )
+        $this->validate(
+            $request,
+            [
+                'username'=>'required',
+                'nom'=>'required',
+                'prenom'=>'required',
+                'numerotel'=>'required',
+                'datenaissance'=>'required',
+                'email'=>'required',
+                'password'=>'required',
+            ]
         );
 
-        DB::table('users')->where('id',52)->update($data);
+        $user->username = $request->username;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->numerotel = $request->numerotel;
+        $user->datenaissance = $request->datenaissance;
+        $user->email = $request->email;
+        $user->password = $request->password;
 
+        $user->save();
 
         return redirect()->route('users.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  int  $id
+     * @return RedirectResponse
      */
-    public function delete($id)
+    public function destroy(Request $request,$id)
     {
-        DB::delete('delete from users where id = ? ',[$id]);
+        if($request->delete == 'valide'){
+            $user = User::find($id);
+            $user->delete();
+        }
 
         return redirect()->route('users.index');
     }
