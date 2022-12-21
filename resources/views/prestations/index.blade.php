@@ -5,7 +5,7 @@
 
 <p>
     <!-- Lien pour créer un nouvel article : "prestations.create" -->
-    <a href="{{ route('prestations.create') }}" title="Créer un article" >Créer un nouveau prestation</a>
+    <a href="{{ route('prestations.create') }}" title="Créer un article" >Créer une nouvelle prestation</a>
 </p>
 
 <!-- Le tableau pour lister les articles/prestations -->
@@ -38,17 +38,20 @@
                     {{$prestation-> created_at}}
             </td>
             <td>
-                <!-- Lien pour modifier un prestation : "prestations.edit" -->
-                <a href="{{ route('prestations.edit', $prestation) }}" title="Modifier l'article" >Modifier</a>
+                    {{$prestation-> updated_at}}
             </td>
             <td>
-                <!-- Formulaire pour supprimer un prestation : "prestations.destroy" -->
-                <form method="prestation" action="{{ route('prestations.destroy', $prestation) }}" >
-                    <!-- CSRF token -->
+                <!-- Lien pour modifier un prestation : "prestations.edit" -->
+                <a href="{{ route('prestations.edit', $prestation) }}" class="btn btn-primary" title="Modifier l'article" >Modifier</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous supprimer la prestation ? ')){
+                    document.getElementById('form-{{$prestation->id}}').submit()
+                 }">Supprimer</a>
+
+                <form id="form-{{$prestation->id}}" action="{{route('prestations.destroy',['prestation'=>$prestation->id])}}" method="post">
                     @csrf
-                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                    @method("DELETE")
-                    <input type="submit" value="x Supprimer" >
+                    <input type="hidden" name="_method" value="delete">
                 </form>
             </td>
         </tr>

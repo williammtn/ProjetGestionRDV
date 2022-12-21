@@ -27,7 +27,7 @@ class PrestationController extends Controller
      */
     public function create()
     {
-        //
+        return view('prestations.create');
     }
 
     /**
@@ -38,7 +38,15 @@ class PrestationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Prestation::create(
+            array(
+                'description'=>$request->input('description'),
+                'remember_token'=>'0000',
+                'created_at'=>now(),
+                'updated_at'=>now()
+            )
+        );
+        return redirect()->route('prestations.index');
     }
 
     /**
@@ -81,8 +89,11 @@ class PrestationController extends Controller
      * @param  \App\Models\Prestation  $prestation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prestation $prestation)
+    public function destroy($id)
     {
-        //
+        Prestation::destroy([$id]);
+
+        return redirect()->route('prestations.index');
+
     }
 }
