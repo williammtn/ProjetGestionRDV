@@ -66,9 +66,11 @@ class PrestationController extends Controller
      * @param  \App\Models\Prestation  $prestation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prestation $prestation)
+    public function edit($id)
     {
-        //
+        $prestation = Prestation::findOrFail($id);
+        return view('prestations.edit',['prestation'=>$prestation]);
+
     }
 
     /**
@@ -80,7 +82,16 @@ class PrestationController extends Controller
      */
     public function update(Request $request, Prestation $prestation)
     {
-        //
+        $request->validate([
+            'description'=>'required',
+            'updated_at'=>now()
+        ]);
+
+        $prestation->fill($request->post())->save();
+
+
+        return redirect()->route('prestations.index');
+
     }
 
     /**
