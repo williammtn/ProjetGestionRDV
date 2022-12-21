@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -10,80 +14,136 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
-        //On récupère tous les Post
-        $users = User::latest()->get();
-
-        // On transmet les Post à la vue
-        return view("users.index", compact("users"));
+        $users = User::all();
+        return view('user.index',['users'=>$users]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'username'=>'required',
+                'nom'=>'required',
+                'prenom'=>'required',
+                'numerotel'=>'required',
+                'datenaissance'=>'required',
+                'email'=>'required',
+                'password'=>'required',
+            ]
+        );
+
+        $user = new User;
+        $user->username = $request->username;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->numerotel = $request->numerotel;
+        $user->datenaissance = $request->datenaissance;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return Application|Factory|View
      */
-    public function show(User $user)
+    public function show(Request $request, $id)
     {
-        //
+        $action = $request->query('action','show');
+        $user = User::find($id);
+
+        return view('user.show',['user'=>$user, 'action'=>$action]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return Application|Factory|View
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit',['user'=>$user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param  int  $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $this->validate(
+            $request,
+            [
+                'username'=>'required',
+                'nom'=>'required',
+                'prenom'=>'required',
+                'numerotel'=>'required',
+                'datenaissance'=>'required',
+                'email'=>'required',
+                'password'=>'required',
+            ]
+        );
+
+        $user->username = $request->username;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->numerotel = $request->numerotel;
+        $user->datenaissance = $request->datenaissance;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        $user->save();
+
+        return redirect()->route('users.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return RedirectResponse
      */
-    public function destroy(User $user)
+    public function destroy(Request $request,$id)
     {
-        //
+        if($request->delete == 'valide'){
+            $user = User::find($id);
+            $user->delete();
+        }
+
+        return redirect()->route('users.index');
     }
 }

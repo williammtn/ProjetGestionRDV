@@ -1,8 +1,10 @@
 <?php
 
+
+use App\Http\Controllers\ForfaitController;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 use App\Http\Livewire\Calendar;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
@@ -29,15 +31,11 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 
 Route::resource("forfaits", ForfaitController::class);
 Route::resource("prestations", PrestationController::class);
 Route::resource("sections", SectionController::class);
+Route::resource("users", UserController::class);
 
 
 Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
@@ -48,4 +46,3 @@ Route::get('/full-calender', [FullCalenderController::class, 'index'])->name('pr
 Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 
 
-Route::resource("users", UserController::class);
