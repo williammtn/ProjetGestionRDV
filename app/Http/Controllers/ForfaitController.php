@@ -18,7 +18,7 @@ class ForfaitController extends Controller
     {
         $forfaits = Forfait::latest()->get();
 
-        return view("forfait.index", compact("forfaits"));
+        return view("admin.forfait.index", compact("forfaits"));
     }
 
     /**
@@ -30,7 +30,7 @@ class ForfaitController extends Controller
     {
         $prestation = Prestation::all();
         $section = Section::all();
-        return view('forfait.create')->with('prestation', $prestation)->with('section',$section);
+        return view('admin.forfait.create')->with('prestation', $prestation)->with('section',$section);
     }
 
     /**

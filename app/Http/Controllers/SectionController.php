@@ -16,7 +16,7 @@ class SectionController extends Controller
     {
         $sections = Section::latest()->get();
 
-        return view("sections.index", compact("sections"));
+        return view("admin.sections.index", compact("sections"));
     }
 
     /**
@@ -26,7 +26,7 @@ class SectionController extends Controller
      */
     public function create()
     {
-        return view('sections.create');
+        return view('admin.sections.create');
     }
 
     /**

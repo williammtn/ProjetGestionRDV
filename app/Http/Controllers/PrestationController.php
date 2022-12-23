@@ -17,7 +17,7 @@ class PrestationController extends Controller
     {
         $prestations = Prestation::latest()->get();
 
-        return view("prestations.index", compact("prestations"));
+        return view("admin.prestations.index", compact("prestations"));
     }
 
     /**
@@ -27,7 +27,7 @@ class PrestationController extends Controller
      */
     public function create()
     {
-        return view('prestations.create');
+        return view('admin.prestations.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class PrestationController extends Controller
     public function edit($id)
     {
         $prestation = Prestation::findOrFail($id);
-        return view('prestations.edit',['prestation'=>$prestation]);
+        return view('admin.prestations.edit',['prestation'=>$prestation]);
 
     }
 
