@@ -17,7 +17,7 @@ return new class extends Migration
             $tablerdv->id();
             $tablerdv->text('title');
             $tablerdv->date('daterdv');
-            $tablerdv->time('heurerdv');
+            $tablerdv->string('heurerdv');
             $tablerdv->unsignedBigInteger('idforfait');
             $tablerdv->unsignedBigInteger('iduser');
             $tablerdv->foreign('idforfait')
