@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('user.index',['users'=>$users]);
+        return view('admin.user.index',['users'=>$users]);
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('admin.user.create');
     }
 
     /**
@@ -78,7 +78,7 @@ class UserController extends Controller
         $action = $request->query('action','show');
         $user = User::find($id);
 
-        return view('user.show',['user'=>$user, 'action'=>$action]);
+        return view('admin.user.show',['user'=>$user, 'action'=>$action]);
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('user.edit',['user'=>$user]);
+        return view('admin.user.edit',['user'=>$user]);
     }
 
     /**

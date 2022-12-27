@@ -26,22 +26,26 @@ Route::get('/', function () {
 //    return view('welcome');
 });
 
-// Auth::routes();
+// Public
+Auth::routes();
+Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
 
+// Membre
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::resource("forfaits", ForfaitController::class);
-Route::resource("prestations", PrestationController::class);
-Route::resource("sections", SectionController::class);
-Route::resource("users", UserController::class);
-
-
-Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
-Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
-
+// Calendrier
 Route::get('/full-calender', [FullCalenderController::class, 'index'])->name('prendrerdv');
-
 Route::post('full-calender/action', [FullCalenderController::class, 'action']);
+
+// Panneau administratif
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
+Route::resource("/admin/forfaits", ForfaitController::class);
+Route::resource("/admin/prestations", PrestationController::class);
+Route::resource("/admin/sections", SectionController::class);
+Route::resource("/admin/users", UserController::class);
+
+
+
 
 
