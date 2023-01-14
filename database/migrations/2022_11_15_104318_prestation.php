@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('prestations', function (Blueprint $tableprestation) {
             $tableprestation->id();
             $tableprestation->text('description');
-            $tableprestation->text('complement');
-            $tableprestation->integer('prix');
-            $tableprestation->integer('temps');
-            $tableprestation->boolean('reservable');
+            // $tableprestation->text('complement');
+            // $tableprestation->integer('prix');
+            // $tableprestation->integer('temps');
+            // $tableprestation->boolean('reservable');
             $tableprestation->rememberToken();
             $tableprestation->timestamps();
         });

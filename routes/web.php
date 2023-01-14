@@ -1,10 +1,13 @@
 <?php
 
+
+use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 use App\Http\Livewire\Calendar;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\ForfaitController;
 use App\Http\Controllers\PrestationController;
 use App\Http\Controllers\FullCalenderController;
 /*
@@ -25,24 +28,25 @@ Route::get('/', function () {
 
 
 Auth::routes();
+Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
 
+// Membre
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Calendrier
+Route::get('/full-calender/ajax', [FullCalenderController::class, 'index'])->name('prendrerdv');
+Route::post('/full-calender/ajax', [FullCalenderController::class, 'ajax']);
+
+
+// Panneau administratif
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
+Route::resource("/admin/forfaits", ForfaitController::class);
+Route::resource("/admin/prestations", PrestationController::class);
+Route::resource("/admin/sections", SectionController::class);
+Route::resource("/admin/users", UserController::class);
 
 
 
-Route::resource("prestations", PrestationController::class);
 
 
-Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
-Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'index'])->name('rdv');
-Route::get('/forfaits',[\App\Http\Controllers\ForfaitController::class,'index'])->name('forfaits');
-
-Route::get('/fullcalender', [FullCalenderController::class, 'index'])->name('prendrerdv');
-
-Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
-
-
-
-
-Route::resource("users", UserController::class);

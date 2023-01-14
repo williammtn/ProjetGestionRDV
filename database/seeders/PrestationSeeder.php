@@ -16,6 +16,40 @@ class PrestationSeeder extends Seeder
      */
     public function run()
     {
+
+        Prestation::factory([
+            'description'=>"Shampooing",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+        Prestation::factory([
+            'description'=>"Cheveux Courts",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+        Prestation::factory([
+            'description'=>"Cheveux mi-longs",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+        Prestation::factory([
+            'description'=>"Cheveux longs",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+        Prestation::factory([
+            'description'=>"Coloration",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ])->create();
+
+
+
+        /*
         //niveau
         $oreilles = "Cheveux au niveau des oreilles";
         $epaules = "Cheveux aux épaules";

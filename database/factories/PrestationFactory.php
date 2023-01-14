@@ -18,10 +18,10 @@ class PrestationFactory extends Factory
     {
         return [
             'description'=>$this->faker->text(),
-            'complement'=>$this->faker->text(),
-            'prix'=>$this->faker->numberBetween($min = 10, $max=30),
-            'temps'=>$this->faker->numberBetween($min = 5, $max = 50),
-            'reservable'=>$this->faker->boolean(),
+            // 'complement'=>$this->faker->text(),
+            // 'prix'=>$this->faker->numberBetween($min = 10, $max=30),
+            // 'temps'=>$this->faker->numberBetween($min = 5, $max = 50),
+            // 'reservable'=>$this->faker->boolean(),
         ];
     }
 }

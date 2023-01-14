@@ -20,113 +20,115 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+    $(document).ready(function() {
 
-            /*------------------------------------------
-            --------------------------------------------
-            Get Site URL
-            --------------------------------------------
-            --------------------------------------------*/
-            var SITEURL = "{{ url('/') }}";
+        /*------------------------------------------
+        --------------------------------------------
+        Get Site URL
+        --------------------------------------------
+        --------------------------------------------*/
+        var SITEURL = "{{ url('/') }}";
 
-            /*------------------------------------------
-            --------------------------------------------
-            CSRF Token Setup
-            --------------------------------------------
-            --------------------------------------------*/
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        /*------------------------------------------
+        --------------------------------------------
+        CSRF Token Setup
+        --------------------------------------------
+        --------------------------------------------*/
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        /*------------------------------------------
+        --------------------------------------------
+        FullCalender JS Code
+        --------------------------------------------
+        --------------------------------------------*/
+        var calendar = $('#calendar').fullCalendar({
+            editable: true,
+            events: SITEURL + "/full-calender/ajax",
+            displayEventTime: false,
+            editable: true,
+            eventRender: function(event, element, view) {
+                if (event.allDay === 'true') {
+                    event.allDay = true;
+                } else {
+                    event.allDay = false;
                 }
-            });
+            },
+            selectable: true,
+            selectHelper: true,
+            select: function(start, end, allDay) {
+                var title = prompt('Event Title:');
+                var idforfait = prompt('idforfait:');
+                var iduser = prompt('iduser:');
+                if (title && idforfait && iduser) {
+                    var daterdv = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                    var heurerdv = $.fullCalendar.formatDate(start, "h:m:s");
+                    $.ajax({
+                        url: SITEURL + "/full-calender/ajax",
+                        data: {
+                            title: title,
+                            daterdv: daterdv,
+                            heurerdv: heurerdv,
+                            idforfait: idforfait,
+                            iduser: iduser,
+                            type: 'add'
+                            
+                        },
+                        type: "POST",
+                        success: function(data) {
+                            displayMessage("Event Created Successfully");
 
-            /*------------------------------------------
-            --------------------------------------------
-            FullCalender JS Code
-            --------------------------------------------
-            --------------------------------------------*/
-            var calendar = $('#calendar').fullCalendar({
-                editable: true,
-                events: SITEURL + "/fullcalender",
-                displayEventTime: false,
-                editable: true,
-                eventRender: function(event, element, view) {
-                    if (event.allDay === 'true') {
-                        event.allDay = true;
-                    } else {
-                        event.allDay = false;
-                    }
-                },
-                selectable: true,
-                selectHelper: true,
-                select: function(daterdv,heurerdv, allDay) {
-                    var title = prompt('Event Title:');
-                    // var hours = prompt('Heure du Rendez-Vous');
-                    if (title) {
-                        var potatus = time(heurerdv);
-                        var daterdv = $.fullCalendar.formatDate(daterdv, "Y-MM-DD");
-                        var heurerdv = $.fullCalendar.formatDate(heurerdv, "h:m:s");
-                        $.ajax({
-                            url: SITEURL + "/fullcalenderAjax",
-                            data: {
+                            calendar.fullCalendar('renderEvent', {
+                                id: data.id,
                                 title: title,
                                 daterdv: daterdv,
                                 heurerdv: heurerdv,
-                                type: 'add'
-                            },
-                            type: "POST",
-                            success: function(data) {
-                                displayMessage("Event Created Successfully");
-
-                                calendar.fullCalendar('renderEvent', {
-                                    id: data.id,
-                                    title: title,
-                                    daterdv: daterdv,
-                                    heurerdv: heurerdv,
-                                    allDay: allDay
-                                }, true);
-
-                                calendar.fullCalendar('unselect');
-                            }
-                        });
-                    }
-                },
-                eventDrop: function(event, delta) {
-                        var daterdv = $.fullCalendar.formatDate(daterdv, "Y-MM-DD");
-                        var heurerdv = $.fullCalendar.formatDate(heurerdv);
-
-                    $.ajax({
-                        url: SITEURL + '/fullcalenderAjax',
-                        data: {
-                            title: event.title,
-                            daterdv: daterdv,
-                            heurerdv: heurerdv,
-                            id: event.id,
-                            type: 'update'
-                        },
-                        type: "POST",
-                        success: function(response) {
-                            displayMessage("Event Updated Successfully");
+                                allDay: allDay
+                            }, true);
+                            calendar.fullCalendar('unselect');
                         }
                     });
-                },
-                eventClick: function(event) {
-                    var deleteMsg = confirm("Do you really want to delete?");
-                    if (deleteMsg) {
-                        $.ajax({
-                            type: "POST",
-                            url: SITEURL + '/fullcalenderAjax',
-                            data: {
-                                id: event.id,
-                                type: 'delete'
-                            },
-                            success: function(response) {
-                                calendar.fullCalendar('removeEvents', event.id);
-                                displayMessage("Event Deleted Successfully");
-                            }
-                        });
-                    }
                 }
+            },
+            eventDrop: function(event, delta) {
+    var daterdv = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+    var heurerdv = $.fullCalendar.formatDate(event.start, "h:m:s");
+
+    $.ajax({
+        url: SITEURL + '/full-calender/ajax',
+        data: {
+            title: event.title,
+            daterdv: daterdv,
+            heurerdv: heurerdv,
+            id: event.id,
+            type: 'update'
+        },
+        type: "POST",
+        success: function(response) {
+            displayMessage("Event Updated Successfully");
+        }
+    });
+},
+eventClick: function(event) {
+    var deleteMsg = confirm("Do you really want to delete?");
+    if (deleteMsg) {
+        $.ajax({
+            type: "POST",
+            url: SITEURL + '/full-calender/ajax',
+            data: {
+                id: event.id,
+                type: 'delete'
+            },
+            success: function(response) {
+                calendar.fullCalendar('removeEvents', event.id);
+                displayMessage("Event Deleted Successfully");
+            }
+        });
+    }
+}
 
             });
 

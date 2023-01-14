@@ -18,6 +18,6 @@ class Section extends Model
      */
     protected $fillable = [
         'nom',
-        'odre',
+        'ordre',
     ];
 }

@@ -10,7 +10,7 @@ class RdvController extends Controller
     public function index()
     {
         $datas = RendezVous::all();
-        return view('rdv.rdv',['rendezvous'=>$datas]);
+        return view('admin.rdv.rdv',['rendezvous'=>$datas]);
     }
 
 }

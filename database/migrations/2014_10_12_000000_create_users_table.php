@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('numerotel')->nullable();
             $table->date('datenaissance')->nullable();
             $table->boolean('isadmin')->default(false);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
