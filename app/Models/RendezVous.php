@@ -17,6 +17,7 @@ class RendezVous extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'title',
         'daterdv',
         'heurerdv',
         'idforfait',

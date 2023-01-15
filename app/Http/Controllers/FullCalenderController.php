@@ -2,55 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\RendezVous;
+use Illuminate\Http\Request;
 
 class FullCalenderController extends Controller
 {
-    public function index(Request $request)
-    {
-    	if($request->ajax())
-    	{
-    		$data = RendezVous::whereDate('daterdv', '>=', $request->daterdv)
-                       ->whereTime('heurerdv',   '<=', $request->heurerdv)
-                       ->get(['id','daterdv', 'heurerdv']);
-            return response()->json($data);
-    	}
-    	return view('full-calender');
+    public function index()
+{
+    $rendezVous = RendezVous::all();
+
+    $events = [];
+    foreach($rendezVous as $rdv) {
+        $events[] = [
+            'title' => $rdv->title,
+            'start' => $rdv->daterdv.'T'.$rdv->heurerdv,
+            'idforfait' => $rdv->idforfait,
+            'iduser' => $rdv->iduser,
+        ];
     }
+    
+    return view('fullcalender')->with('events', json_encode($events));
+}
 
-    public function action(Request $request)
+    public function ajax(Request $request)
     {
-    	if($request->ajax())
-    	{
-    		if($request->type == 'add')
-    		{
-    			$event = RendezVous::create([
-    				'daterdv'		=>	$request->daterdv,
-    				'heurerdv'		=>	$request->heurerdv
-    			]);
+        switch ($request->type) {
+            case 'add':
+                $rendezVous = RendezVous::create([
+                    'title' => $request->title,
+                    'daterdv' => $request->daterdv,
+                    'heurerdv' => $request->heurerdv,
+                    'idforfait' => $request->idforfait,
+                    'iduser' => $request->iduser,
+                ]);
 
-    			return response()->json($event);
-    		}
+                return response()->json($rendezVous);
+                break;
 
-    		if($request->type == 'update')
-    		{
-    			$event = RendezVous::find($request->id)->update([
-    				'daterdv'		=>	$request->daterdv,
-    				'heurerdv'		=>	$request->heurerdv
-    			]);
+            case 'update':
+                $rendezVous = RendezVous::find($request->id)->update([
+                    'title' => $request->title,
+                    'daterdv' => $request->daterdv,
+                    'heurerdv' => $request->heurerdv,
+                    'idforfait' => $request->idforfait,
+                    'iduser' => $request->iduser,
+                ]);
 
-    			return response()->json($event);
-    		}
+                return response()->json($rendezVous);
+                break;
 
-    		if($request->type == 'delete')
-    		{
-    			$event = RendezVous::find($request->id)->delete();
+            case 'delete':
+                $rendezVous = RendezVous::find($request->id)->delete();
 
-    			return response()->json($event);
-    		}
-    	}
+                return response()->json($rendezVous);
+                break;
+
+            default:
+                break;
+        }
     }
 }
-?>

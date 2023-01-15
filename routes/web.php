@@ -26,7 +26,7 @@ Route::get('/', function () {
 //    return view('welcome');
 });
 
-// Public
+
 Auth::routes();
 Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])->name('accueil');
 
@@ -34,8 +34,9 @@ Route::get('/accueil', [App\Http\Controllers\AccueilController::class, 'index'])
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Calendrier
-Route::get('/full-calender', [FullCalenderController::class, 'index'])->name('prendrerdv');
-Route::post('full-calender/action', [FullCalenderController::class, 'action']);
+Route::get('/full-calender/ajax', [FullCalenderController::class, 'index'])->name('prendrerdv');
+Route::post('/full-calender/ajax', [FullCalenderController::class, 'ajax']);
+
 
 // Panneau administratif
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);

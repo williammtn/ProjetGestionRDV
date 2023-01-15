@@ -25,6 +25,7 @@ class RendezVousFactory extends Factory
         $users_id = User::all()->pluck('id');
         $forfaits_id = Forfait::all()->pluck('id');
         return [
+            'title'=>fake()->text(),
             'daterdv'=> (new DateTime($startDate))->add(new DateInterval('P'.$this->faker->numberBetween(0,$nbDays).'D'))->format('Y-m-d'),
             'heurerdv'=>$this->faker->randomElement(['08','09','10','11','12','13','14','15','16','17','18','19']).":".$this->faker->randomElement(['00:00','30:00']),
             'idforfait'=>$this->faker->randomElement($forfaits_id),
