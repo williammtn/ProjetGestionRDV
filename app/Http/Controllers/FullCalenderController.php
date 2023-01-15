@@ -8,10 +8,21 @@ use Illuminate\Http\Request;
 class FullCalenderController extends Controller
 {
     public function index()
-    {
-        $rendezVous = RendezVous::all();
-        return view('fullcalender', compact('rendezVous'));
+{
+    $rendezVous = RendezVous::all();
+
+    $events = [];
+    foreach($rendezVous as $rdv) {
+        $events[] = [
+            'title' => $rdv->title,
+            'start' => $rdv->daterdv.'T'.$rdv->heurerdv,
+            'idforfait' => $rdv->idforfait,
+            'iduser' => $rdv->iduser,
+        ];
     }
+    
+    return view('fullcalender')->with('events', json_encode($events));
+}
 
     public function ajax(Request $request)
     {

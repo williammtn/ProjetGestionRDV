@@ -47,15 +47,19 @@
         --------------------------------------------*/
         var calendar = $('#calendar').fullCalendar({
             editable: true,
-            events: SITEURL + "/full-calender/ajax",
+            events: <?php echo $events; ?>,
             displayEventTime: false,
             editable: true,
+            eventColor: '#378006',
             eventRender: function(event, element, view) {
                 if (event.allDay === 'true') {
                     event.allDay = true;
                 } else {
                     event.allDay = false;
                 }
+                var daterdv = event.daterdv;
+                var heurerdv = event.heurerdv;
+                element.find(".fc-title").append("<br/>" + daterdv + "<br/>" + heurerdv);
             },
             selectable: true,
             selectHelper: true,
@@ -63,9 +67,9 @@
                 var title = prompt('Event Title:');
                 var idforfait = prompt('idforfait:');
                 var iduser = prompt('iduser:');
-                if (title && idforfait && iduser) {
+                var heurerdv = prompt('heurerdv');
+                if (title && idforfait && iduser && heurerdv) {
                     var daterdv = $.fullCalendar.formatDate(start, "Y-MM-DD");
-                    var heurerdv = $.fullCalendar.formatDate(start, "h:m:s");
                     $.ajax({
                         url: SITEURL + "/full-calender/ajax",
                         data: {
@@ -74,6 +78,7 @@
                             heurerdv: heurerdv,
                             idforfait: idforfait,
                             iduser: iduser,
+                            _token: "{{ csrf_token() }}",
                             type: 'add'
                             
                         },
@@ -94,39 +99,41 @@
                 }
             },
             eventDrop: function(event, delta) {
-    var daterdv = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-    var heurerdv = $.fullCalendar.formatDate(event.start, "h:m:s");
+            var daterdv = $.fullCalendar.formatDate(event.start, "Y-MM-DD'T'HH:mm:ss");
+            var heurerdv = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
 
-    $.ajax({
-        url: SITEURL + '/full-calender/ajax',
-        data: {
-            title: event.title,
-            daterdv: daterdv,
-            heurerdv: heurerdv,
-            id: event.id,
-            type: 'update'
-        },
-        type: "POST",
-        success: function(response) {
-            displayMessage("Event Updated Successfully");
-        }
-    });
-},
-eventClick: function(event) {
-    var deleteMsg = confirm("Do you really want to delete?");
-    if (deleteMsg) {
-        $.ajax({
-            type: "POST",
-            url: SITEURL + '/full-calender/ajax',
+            $.ajax({
+            url: '/full-calender/ajax' ,
             data: {
+              title: event.title,
+                daterdv: daterdv,
+                heurerdv: heurerdv,
                 id: event.id,
-                type: 'delete'
+                _token: "{{ csrf_token() }}",
+                type: 'update'
             },
+            type: "POST",
             success: function(response) {
-                calendar.fullCalendar('removeEvents', event.id);
-                displayMessage("Event Deleted Successfully");
+                displayMessage("Event Updated Successfully");
             }
         });
+        },
+        eventClick: function(event) {
+            var deleteMsg = confirm("Do you really want to delete?");
+            if (deleteMsg) {
+                 $.ajax({
+                     type: "POST",
+                     url: '/full-calender/ajax',
+                     data: {
+                     id: event.id,
+                     _token: "{{ csrf_token() }}",
+                     type: 'delete'
+                },
+                success: function(response) {
+                    calendar.fullCalendar('removeEvents', event.id);
+                    displayMessage("Event Deleted Successfully");
+                }
+            });
     }
 }
 
